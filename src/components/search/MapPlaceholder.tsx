@@ -24,9 +24,8 @@ export function MapPlaceholder({ properties = [] }: MapProps) {
     );
   }
 
-  // Google Maps embed URL - using environment variable for API key
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
-  const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${property.location.lat},${property.location.lng}&zoom=14`;
+  // Google Maps iframe embed - no API key needed for basic iframe embeds
+  const mapUrl = `https://maps.google.com/maps?q=${property.location.lat},${property.location.lng}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
 
   return (
     <div className="h-full min-h-[400px] rounded-2xl overflow-hidden border-2 border-gray-200 shadow-lg relative">
