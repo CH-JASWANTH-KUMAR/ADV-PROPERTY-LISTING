@@ -24,8 +24,9 @@ export function MapPlaceholder({ properties = [] }: MapProps) {
     );
   }
 
-  // Google Maps embed URL
-  const mapUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${property.location.lat},${property.location.lng}&zoom=14`;
+  // Google Maps embed URL - using environment variable for API key
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
+  const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${property.location.lat},${property.location.lng}&zoom=14`;
 
   return (
     <div className="h-full min-h-[400px] rounded-2xl overflow-hidden border-2 border-gray-200 shadow-lg relative">
